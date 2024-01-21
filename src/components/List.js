@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const List = React.memo(({id, title, completed, todoData, setTodoData, provided, snapshot}) =>{
+const List = React.memo(({id, title, completed, todoData, setTodoData, provided, snapshot, handleClick}) =>{
     const handleCompleteChange = (id) => {
         let newTodoData = todoData.map(data => {
             if(data.id === id) {
@@ -10,11 +10,7 @@ const List = React.memo(({id, title, completed, todoData, setTodoData, provided,
         })
         setTodoData(newTodoData);
     }
-    const handleClick = (id) => {
-        let newTodoData = todoData.filter(data => data.id !== id);
-        console.log(newTodoData);
-        setTodoData(newTodoData)
-    }
+
 
     return(
         <div key={id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}
